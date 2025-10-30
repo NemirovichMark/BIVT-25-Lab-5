@@ -2,11 +2,31 @@
     public class Blue {
         public double[] Task1(int[,] matrix) {
             double[] answer = null;
-
             // code here
 
-            // end
+            var rows = matrix.GetLength(0);
+            var cols = matrix.GetLength(1);
 
+            answer = new double[rows];
+
+            for (var row_index = 0; row_index < rows; row_index += 1) {
+                var positives = 0;
+
+                for (var col_index = 0; col_index < cols; col_index += 1) {
+                    var item = matrix[row_index, col_index];
+
+                    if (0.0 >= item) { continue; }
+
+                    positives += 1;
+                    answer[row_index] += item;
+                }
+
+                if (0 == positives) { continue; }
+
+                answer[row_index] /= positives;
+            }
+
+            // end
             return answer;
         }
 
