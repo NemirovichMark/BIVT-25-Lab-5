@@ -37,32 +37,37 @@
             var rows = matrix.GetLength(0);
             var cols = matrix.GetLength(1);
 
-            var max_item_row_index = 0;
-            var max_item_col_index = 0;
+            var max_item_row = 0;
+            var max_item_col = 0;
 
             for (var row = 0; row < rows; row += 1) {
                 for (var col = 0; col < cols; col += 1) {
-                    if (matrix[row, col] > matrix[max_item_row_index, max_item_col_index]) {
-                        max_item_row_index = row;
-                        max_item_col_index = col;
+                    if (matrix[row, col] > matrix[max_item_row, max_item_col]) {
+                        max_item_row = row;
+                        max_item_col = col;
                     }
                 }
             }
 
             answer = new int[rows - 1, cols - 1];
 
-            for (var row = 0; row < rows; row += 1) {
-                if (row == max_item_row_index) { continue; }
-
-                var dest_row = row;
-                if (row > max_item_row_index) { dest_row -= 1; }
-
-                for (int col = 0; col < max_item_col_index; col += 1) {
-                    answer[dest_row, col] = matrix[row, col];
+            for (var row = 0; row < max_item_row; row += 1) {
+                for (int col = 0; col < max_item_col; col += 1) {
+                    answer[row, col] = matrix[row, col];
                 }
 
-                for (int col = max_item_col_index + 1; col < cols; col += 1) {
-                    answer[dest_row, col - 1] = matrix[row, col];
+                for (int col = max_item_col + 1; col < cols; col += 1) {
+                    answer[row, col - 1] = matrix[row, col];
+                }
+            }
+
+            for (var row = max_item_row + 1; row < rows; row += 1) {
+                for (int col = 0; col < max_item_col; col += 1) {
+                    answer[row - 1, col] = matrix[row, col];
+                }
+
+                for (int col = max_item_col + 1; col < cols; col += 1) {
+                    answer[row - 1, col - 1] = matrix[row, col];
                 }
             }
 
