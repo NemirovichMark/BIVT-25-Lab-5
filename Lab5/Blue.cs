@@ -76,20 +76,24 @@
         }
 
         public void Task3(int[,] matrix) {
-
             // code here
 
-            // end
+            var rows = matrix.GetLength(0);
+            var cols = matrix.GetLength(1);
 
+            // end
         }
 
         public int[,] Task4(int[,] matrix) {
             int[,] answer = null;
-
             // code here
 
-            // end
+            var rows = matrix.GetLength(0);
+            var cols = matrix.GetLength(1);
 
+            answer
+
+            // end
             return answer;
         }
 
