@@ -28,7 +28,7 @@
 
             for (var r = 0; r < rows; r += 1) {
                 var max_c = 0;
-            
+
                 for (var c = 0; c < cols; c += 1) {
                     if (matrix[r, c] > matrix[r, max_c]) {
                         max_c = c;
@@ -36,7 +36,7 @@
                 }
 
                 var max_item = (double)matrix[r, max_c];
-            
+
                 for (var c = 0; c < max_c; c += 1) {
                     if (matrix[r, c] < 0) {
                         matrix[r, c] = (int)Math.Floor(matrix[r, c] / max_item);
@@ -47,11 +47,34 @@
             // end
         }
         public void Task3(int[,] matrix, int k) {
-
             // code here
 
-            // end
+            var size = matrix.GetLength(0);
 
+            if (matrix.GetLength(1) != size) {
+                return;
+            }
+
+            if (k >= size) {
+                return;
+            }
+
+            var max_item_index = 0;
+            for (var i = 0; i < size; i += 1) {
+                if (matrix[i, i] > matrix[max_item_index, max_item_index]) {
+                    max_item_index = i;
+                }
+            }
+
+            if (k == max_item_index) {
+                return;
+            }
+
+            for (var i = 0; i < size; i += 1) {
+                (matrix[i, max_item_index], matrix[i, k]) = (matrix[i, k], matrix[i, max_item_index]);
+            }
+
+            // end
         }
         public void Task4(int[,] matrix) {
 
