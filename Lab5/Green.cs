@@ -77,11 +77,43 @@
             // end
         }
         public void Task4(int[,] matrix) {
-
             // code here
 
-            // end
+            var rows = matrix.GetLength(0);
+            var cols = matrix.GetLength(1);
 
+            if (cols != rows) {
+                return;
+            }
+
+            var max_item_row = 0;
+            var max_item_col = 0;
+
+            for (var r = 0; r < rows; r += 1) {
+                for (var c = 0; c < cols; c += 1) {
+                    if (matrix[r, c] > matrix[max_item_row, max_item_col]) {
+                        max_item_col = c;
+                        max_item_row = r;
+                    }
+                }
+            }
+
+            /*
+            * 0 1 2 3 4
+            0     |
+            1 - - x - -
+            2     |   
+            3     | 
+            4     | 
+            */
+
+            for (int i = 0; i < rows; i += 1) {
+                // (matrix[i, max_item_col], matrix[max_item_row, i]) = (matrix[max_item_row, i], matrix[i, max_item_col]);
+                // (matrix[max_item_col, i], matrix[i, max_item_row]) = (matrix[i, max_item_row], matrix[max_item_col, i]);
+                // matrix[max_item_row, i] = matrix[i, max_item_col];
+            }
+
+            // end
         }
         public int[,] Task5(int[,] matrix) {
             int[,] answer = null;

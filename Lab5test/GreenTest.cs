@@ -1,15 +1,12 @@
-﻿namespace Lab5test
-{
+﻿namespace Lab5test {
     [TestClass]
-    public sealed class GreenTest
-    {
+    public sealed class GreenTest {
         Lab5.Green _main = new Lab5.Green();
         const double E = 0.0001;
         Data _data = new Data();
 
         [TestMethod]
-        public void Test01()
-        {
+        public void Test01() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][] {
@@ -26,23 +23,19 @@
                 };
             var test = new int[answer.Length][];
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 test[i] = _main.Task1(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].Length, test[i].Length);
-                for (int j = 0; j < answer[i].Length; j++)
-                {
+                for (int j = 0; j < answer[i].Length; j++) {
                     Assert.AreEqual(answer[i][j], test[i][j]);
                 }
             }
         }
         [TestMethod]
-        public void Test02()
-        {
+        public void Test02() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][,] {
@@ -110,27 +103,22 @@
                 }
             };
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 _main.Task2(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].GetLength(0), input[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), input[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
                         Assert.AreEqual(answer[i][j, k], input[i][j, k]);
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test03()
-        {
+        public void Test03() {
             // Arrange
             var input = _data.GetMatrixes();
             var inputk = new int[10] { 1, 2, 3, 4, 5, 0, 1, 3, 5, 7 };
@@ -199,17 +187,10 @@
                 }
             };
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Console.WriteLine($"Test {i}");
 
                 Console.WriteLine($"Input: {displayMatrix(input[i])}");
-
-
-                if (i == 5) {
-                    
-                }
-
 
                 _main.Task3(input[i], inputk[i]);
                 Console.WriteLine($"Output: {displayMatrix(input[i])}");
@@ -217,19 +198,16 @@
                 Console.WriteLine($"Answer: {displayMatrix(answer[i])}\n");
 
                 Assert.AreEqual(answer[i].GetLength(0), input[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), input[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
-                        Assert.AreEqual(answer[i][j, k], input[i][j, k], E, $"Test {i}, row={j}, col={k}");
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
+                        Assert.AreEqual(answer[i][j, k], input[i][j, k], E, $"Test {i + 1}, row={j}, col={k}");
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test04()
-        {
+        public void Test04() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][,] {
@@ -296,28 +274,31 @@
                     {0, 7, -3, -4, -5},
                 }
             };
-            // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
-                _main.Task4(input[i]);
-            }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
+
+                Console.WriteLine($"Test {i}");
+
+                Console.WriteLine($"Input: {displayMatrix(input[i])}");
+                if (i == 3) {
+                    _ = 10;
+                }
+                _main.Task4(input[i]);
+                Console.WriteLine($"Output: {displayMatrix(input[i])}");
+
+                Console.WriteLine($"Answer: {displayMatrix(answer[i])}\n");
+
                 Assert.AreEqual(answer[i].GetLength(0), input[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), input[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
-                        Assert.AreEqual(answer[i][j, k], input[i][j, k]);
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
+                        Assert.AreEqual(answer[i][j, k], input[i][j, k], E, $"Test {i}, row={j}, col={k}");
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test05()
-        {
+        public void Test05() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][,] {
@@ -376,27 +357,22 @@
             };
             var test = new int[answer.Length][,];
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 test[i] = _main.Task5(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].GetLength(0), test[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), test[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
                         Assert.AreEqual(answer[i][j, k], test[i][j, k]);
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test06()
-        {
+        public void Test06() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][,] {
@@ -464,27 +440,22 @@
                 }
             };
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 _main.Task6(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].GetLength(0), input[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), input[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
                         Assert.AreEqual(answer[i][j, k], input[i][j, k]);
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test07()
-        {
+        public void Test07() {
             // Arrange
             var input = _data.GetMatrixes();
             var inputArray = new int[][] {
@@ -558,27 +529,22 @@
                 };
             var test = new int[answer.Length][,];
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 test[i] = _main.Task7(input[i], inputArray[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].GetLength(0), test[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), test[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
                         Assert.AreEqual(answer[i][j, k], test[i][j, k]);
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test08()
-        {
+        public void Test08() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][,] {
@@ -639,27 +605,22 @@
                 }
             };
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 _main.Task8(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].GetLength(0), input[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), input[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
                         Assert.AreEqual(answer[i][j, k], input[i][j, k]);
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test09()
-        {
+        public void Test09() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][,] {
@@ -728,27 +689,22 @@
                 };
             var test = new int[answer.Length][,];
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 _main.Task9(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].GetLength(0), input[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), input[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
                         Assert.AreEqual(answer[i][j, k], input[i][j, k]);
                     }
                 }
             }
         }
         [TestMethod]
-        public void Test10()
-        {
+        public void Test10() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new (int[], int[])[] {
@@ -765,34 +721,28 @@
             };
             var test = new (int[], int[])[answer.Length];
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 test[i] = _main.Task10(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
-                if (answer[i].Item1 == null)
-                {
+            for (int i = 0; i < answer.Length; i++) {
+                if (answer[i].Item1 == null) {
                     Assert.IsNull(test[i].Item1);
                     Assert.IsNull(test[i].Item2);
                     continue;
                 }
                 Assert.AreEqual(answer[i].Item1.Length, test[i].Item1.Length);
-                for (int j = 0; j < answer[i].Item1.Length; j++)
-                {
-                        Assert.AreEqual(answer[i].Item1[j], test[i].Item1[j]);
+                for (int j = 0; j < answer[i].Item1.Length; j++) {
+                    Assert.AreEqual(answer[i].Item1[j], test[i].Item1[j]);
                 }
                 Assert.AreEqual(answer[i].Item2.Length, test[i].Item2.Length);
-                for (int j = 0; j < answer[i].Item2.Length; j++)
-                {
+                for (int j = 0; j < answer[i].Item2.Length; j++) {
                     Assert.AreEqual(answer[i].Item2[j], test[i].Item2[j]);
                 }
             }
         }
         [TestMethod]
-        public void Test11()
-        {
+        public void Test11() {
             // Arrange
             var input = _data.GetMatrixes();
             var answer = new int[][,] {
@@ -860,19 +810,15 @@
                 }
             };
             // Act
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 _main.Task11(input[i]);
             }
             // Assert
-            for (int i = 0; i < answer.Length; i++)
-            {
+            for (int i = 0; i < answer.Length; i++) {
                 Assert.AreEqual(answer[i].GetLength(0), input[i].GetLength(0));
-                for (int j = 0; j < answer[i].GetLength(0); j++)
-                {
+                for (int j = 0; j < answer[i].GetLength(0); j++) {
                     Assert.AreEqual(answer[i].GetLength(1), input[i].GetLength(1));
-                    for (int k = 0; k < answer[i].GetLength(1); k++)
-                    {
+                    for (int k = 0; k < answer[i].GetLength(1); k++) {
                         Assert.AreEqual(answer[i][j, k], input[i][j, k]);
                     }
                 }
@@ -942,7 +888,7 @@
                 }
             }
         }
-        
+
         private string displayMatrix<T>(T[,] matrix) {
             var rows = matrix.GetLength(0);
             var cols = matrix.GetLength(1);
