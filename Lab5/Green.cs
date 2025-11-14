@@ -163,14 +163,12 @@ Answer: Matrix [4x4]
 
             answer = new int[rows - 1, cols];
 
-            for (var r = 0; r < target_row_index; r += 1) {
-                for (var c = 0; c < cols; c += 1) {
+            for (var c = 0; c < cols; c += 1) {
+                for (var r = 0; r < target_row_index; r += 1) {
                     answer[r, c] = matrix[r, c];
                 }
-            }
 
-            for (var r = target_row_index + 1; r < rows; r += 1) {
-                for (var c = 0; c < cols; c += 1) {
+                for (var r = target_row_index + 1; r < rows; r += 1) {
                     answer[r - 1, c] = matrix[r, c];
                 }
             }
@@ -217,11 +215,42 @@ Answer: Matrix [4x4]
         }
         public int[,] Task7(int[,] matrix, int[] array) {
             int[,] answer = null;
-
             // code here
 
-            // end
+            var rows = matrix.GetLength(0);
+            var cols = matrix.GetLength(1);
 
+            if (rows != array.Length) {
+                return matrix;
+            }
+
+            var min_item_row = 0;
+            var min_item_col = 0;
+
+            for (var r = 0; r < rows; r += 1) {
+                for (var c = 0; c < cols; c += 1) {
+                    if (matrix[r, c] < matrix[min_item_row, min_item_col]) {
+                        min_item_col = c;
+                        min_item_row = r;
+                    }
+                }
+            }
+
+            answer = new int[rows, cols + 1];
+
+            for (var r = 0; r < rows; r += 1) {
+                for (var c = 0; c < min_item_col + 1; c += 1) {
+                    answer[r, c] = matrix[r, c];
+                }
+
+                answer[r, min_item_col + 1] = array[r];
+                
+                for (var c = min_item_col + 1; c < cols; c += 1) {
+                    answer[r, c + 1] = matrix[r, c];
+                }
+            }
+
+            // end
             return answer;
         }
         public void Task8(int[,] matrix) {
