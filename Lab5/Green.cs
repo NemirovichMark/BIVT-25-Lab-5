@@ -97,6 +97,25 @@
                     }
                 }
             }
+            /*
+Input: Matrix [4x4]
+ 1      2       4       6
+ 5     -6       7      11
+-1      4      -5       6
+ 1      4       5       6
+
+Output: Matrix [4x4]
+ 1      2       4       5
+ 6     11       6       6
+-1      4      -5       7
+ 1      4       5      -6
+
+Answer: Matrix [4x4]
+ 1      2       4       5
+ 6     11       6       6
+-1      4      -5       7
+ 1      4       5      11
+            */
 
             /*
             * 0 1 2 3 4
@@ -108,7 +127,7 @@
             */
 
             for (int i = 0; i < rows; i += 1) {
-                // (matrix[i, max_item_col], matrix[max_item_row, i]) = (matrix[max_item_row, i], matrix[i, max_item_col]);
+                (matrix[i, max_item_col], matrix[max_item_row, i]) = (matrix[max_item_row, i], matrix[i, max_item_col]);
                 // (matrix[max_item_col, i], matrix[i, max_item_row]) = (matrix[i, max_item_row], matrix[max_item_col, i]);
                 // matrix[max_item_row, i] = matrix[i, max_item_col];
             }
