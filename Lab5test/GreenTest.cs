@@ -731,10 +731,17 @@
             var test = new (int[], int[])[answer.Length];
             // Act
             for (int i = 0; i < answer.Length; i++) {
+                Console.WriteLine($"Test {i}");
+                Console.WriteLine($"Input: {StringFromMatrix(input[i], hide_non_squares: true)}");
+
                 test[i] = _main.Task10(input[i]);
-            }
-            // Assert
-            for (int i = 0; i < answer.Length; i++) {
+
+                Console.WriteLine($"Test: A: {StringFromArray(test[i].Item1)}");
+                Console.WriteLine($"Test: B: {StringFromArray(test[i].Item2)}");
+
+                Console.WriteLine($"Answer: A: {StringFromArray(answer[i].Item1)}");
+                Console.WriteLine($"Answer: B: {StringFromArray(answer[i].Item2)}");
+
                 if (answer[i].Item1 == null) {
                     Assert.IsNull(test[i].Item1);
                     Assert.IsNull(test[i].Item2);
@@ -898,7 +905,10 @@
             }
         }
 
-        private static string StringFromArray<T>(T[] array) {
+        private static string StringFromArray<T>(T[]? array) {
+            if (array == null) {
+                return "Array?";
+            }
             return $"Array[{array.Length}]\n" + string.Join('\t', array) + '\n';
         }
 

@@ -268,7 +268,7 @@ Answer: Matrix [4x4]
 
                 for (var r = 0; r < rows; r += 1) {
                     var item = matrix[r, c];
-                
+
                     if (item > 0) {
                         positives += 1;
                     }
@@ -290,7 +290,7 @@ Answer: Matrix [4x4]
                     matrix[max_item_row, c] = max_item_row;
                 }
             }
-            
+
             // end
         }
         public void Task9(int[,] matrix) {
@@ -315,11 +315,53 @@ Answer: Matrix [4x4]
         }
         public (int[] A, int[] B) Task10(int[,] matrix) {
             int[] A = null, B = null;
-
             // code here
 
-            // end
+            /*
+            6x6 
+            5 + 4 + 3 + 2 + 1 = 10 = (6 * 6 - 6) / 2
 
+            NxN => (N * N - N) / 2
+
+            * 0 1 2 3 4 5
+            0 *     i > j
+            1   *     
+            2     *   
+            3       *
+            4         *
+            5  i < j    *
+            */
+            var size = matrix.GetLength(0);
+
+            if (size != matrix.GetLength(1)) {
+                return (A, B);
+            }
+
+            var items = (size * size - size) / 2;
+
+            A = new int[items + size];
+            var a_cursor = 0;
+
+            B = new int[items];
+            var b_cursor = 0;
+
+            for (var i = 0; i < size; i += 1) {
+                for (var j = 0; j < size; j += 1) {
+                    var item = matrix[i, j];
+
+                    if (i <= j) {
+                        A[a_cursor] = item;
+                        a_cursor += 1;
+                    }
+
+                    if (i > j) {
+                        B[b_cursor] = item;
+                        b_cursor += 1;
+                    }
+                }
+            }
+
+            // end
             return (A, B);
         }
         public void Task11(int[,] matrix) {
