@@ -403,9 +403,8 @@ namespace Lab5
                     matrix[st1, j] = tem;
                 }
             }
-
-
-                // end
+            
+            // end
 
         }
         public int[,] Task10(int[,] A, int[,] B)
