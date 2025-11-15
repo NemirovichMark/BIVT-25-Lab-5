@@ -12,7 +12,7 @@ namespace Lab5
             // code here
             int rows = matrix.GetLength(0);
             answer = new double[rows];
-            
+
             for (int i = 0; i < rows; i++)
             {
                 double sum = 0;
@@ -39,8 +39,8 @@ namespace Lab5
             // code here
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
-            
-            if (rows == 0 || cols == 0) 
+
+            if (rows == 0 || cols == 0)
             {
                 answer = new int[0, 0];
                 return answer;
@@ -85,7 +85,7 @@ namespace Lab5
             // code here
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
-            
+
             for (int i = 0; i < rows; i++)
             {
                 int maxVal = int.MinValue;
@@ -120,7 +120,7 @@ namespace Lab5
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
             answer = new int[rows, cols + 1];
-            
+
             for (int i = 0; i < rows; i++)
             {
                 int maxVal = int.MinValue;
@@ -159,7 +159,7 @@ namespace Lab5
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
             int size = 0;
-            
+
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < cols; j++)
                     if ((i + j) % 2 == 1)
@@ -181,8 +181,9 @@ namespace Lab5
         {
             // code here
             int n = matrix.GetLength(0);
+
             
-            if (k < 0 || k >= n) return;
+            if (n != matrix.GetLength(1) || k < 0 || k >= n) return;
 
             int maxDiagVal = int.MinValue;
             int maxDiagRow = -1;
@@ -205,7 +206,7 @@ namespace Lab5
                 }
             }
 
-            if (negativeRow != -1 && maxDiagRow != negativeRow)
+            if (negativeRow != -1 && maxDiagRow != negativeRow && maxDiagRow != -1)
             {
                 for (int j = 0; j < n; j++)
                 {
@@ -222,7 +223,7 @@ namespace Lab5
             // code here
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
-            
+
             if (cols < 2 || array == null) return;
 
             int maxVal = int.MinValue;
@@ -251,7 +252,7 @@ namespace Lab5
             // code here
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
-            
+
             for (int j = 0; j < cols; j++)
             {
                 int maxVal = int.MinValue;
@@ -283,7 +284,7 @@ namespace Lab5
             // code here
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
-            
+
             for (int i = 0; i < rows - 1; i += 2)
             {
                 int maxOdd = int.MinValue;
@@ -322,7 +323,10 @@ namespace Lab5
         {
             // code here
             int n = matrix.GetLength(0);
+
             
+            if (n != matrix.GetLength(1)) return;
+
             int maxVal = int.MinValue;
             int maxRow = -1;
             for (int i = 0; i < n; i++)
@@ -334,7 +338,7 @@ namespace Lab5
                 }
             }
 
-            if (maxRow != -1)
+            if (maxRow != -1 && maxRow > 0)
             {
                 for (int i = 0; i < maxRow; i++)
                 {
@@ -346,13 +350,12 @@ namespace Lab5
             }
             // end
         }
-
         public void Task11(int[,] matrix)
         {
             // code here
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
-            
+
             int[] positiveCounts = new int[rows];
             for (int i = 0; i < rows; i++)
             {
@@ -391,7 +394,7 @@ namespace Lab5
             int[][] answer = null;
 
             // code here
-            if (array == null || array.Length == 0) 
+            if (array == null || array.Length == 0)
             {
                 answer = new int[0][];
                 return answer;
@@ -439,7 +442,7 @@ namespace Lab5
                         rowSum += array[i][j];
                     }
                     double rowAverage = rowSum / array[i].Length;
-                    
+
                     if (rowAverage >= globalAverage)
                     {
                         answer[index] = new int[array[i].Length];
